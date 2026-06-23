@@ -8,11 +8,12 @@
   "screener_date": null,
   "positions": [],
   "alerts": [],
-  "last_run": "2026-06-22 21:10 ET",
+  "last_run": "2026-06-23 09:01 ET",
   "notes": [
     "2026-06-22 17:54 ET (first invocation ever): state initialized with defaults; outside-hours run, no actions. Account 436021893 holds $306.13, all cash, 0 equity positions, 0 resting orders. Settled/available buying power only ~$0.80; remainder is unsettled sale proceeds.",
     "2026-06-22 17:54 ET observed external activity (left untouched per Ground Rules): ~09:30-09:32 ET, 7 user-placed market SELL orders (ANET, MRVL, VRT, CRDO, MU, CEG, NVDA) liquidated all positions previously opened by the bot on prior days. Not bot-tracked in state.json, so no reconciliation action.",
     "2026-06-22 21:10 ET: outside-hours run (Mon, post-close). Same trading day (date unchanged), so no new-day reset / no equity_open_today refresh. Screener/entry/circuit-breaker skipped per Step 0. No tracked positions -> no trailing-stop work. No orders placed/cancelled. No alerts.",
+    "2026-06-23 09:01 ET: outside-hours run (Tue, pre-market, before 9:30 open). New calendar day but date INTENTIONALLY left at 2026-06-22 so the first MARKET-HOURS run today triggers the Step 1 new-day reset and captures equity_open_today at the regular-session open (the correct circuit-breaker baseline) rather than a pre-market value. Screener/entry/circuit-breaker skipped per Step 0. No tracked positions -> no trailing-stop work. Live account verified: $306.13 all cash (Mon sales now settled T+1), 0 equity positions, 0 resting orders, no untracked holdings. No orders placed/cancelled. No alerts.",
     "live_trading_enabled remains false; the one-time dry-run gate is consumed only on the first market-hours run that reaches Step 6 (entry evaluation)."
   ]
 }
