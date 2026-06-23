@@ -1,33 +1,48 @@
 {
   "date": "2026-06-23",
   "account_number": "436021893",
-  "live_trading_enabled": false,
+  "live_trading_enabled": true,
   "halted_date": null,
   "equity_open_today": 306.13,
-  "screener": null,
-  "screener_date": null,
+  "screener": [
+    {
+      "ticker": "MRNA",
+      "ema_20d": 52.51,
+      "atr_14d_pct": 7.24,
+      "avg_vol_20d": 7170000,
+      "fractional_eligible": true
+    },
+    {
+      "ticker": "QBTS",
+      "ema_20d": 24.61,
+      "atr_14d_pct": 10.46,
+      "avg_vol_20d": 41900000,
+      "fractional_eligible": true
+    }
+  ],
+  "screener_date": "2026-06-23",
   "positions": [],
   "alerts": [
     {
-      "ts": "2026-06-23 10:13 ET",
-      "priority": "HIGH",
-      "code": "SCREENER_BLOCKED",
-      "detail": "Step 5 screener still could not be built (re-confirmed this run). Stage 1 run_scan(scan_id=0cfa55c7-964e-4968-ab36-df13c2f79fa9 from SCAN_ID env) returned NotFound: 'Scan not found because no rows in result set' this run (prior runs returned PermissionDenied: RESTRICTED_ACCESS_REASON_AGREEMENT_NOT_SIGNED). Either form means the pre-provisioned saved scan cannot execute and produces no universe. Per GROUND RULES, did NOT call get_scans/create_scan and did NOT hand-pick a universe. screener left null; Step 6 entry evaluation had no universe and was skipped. Resolution needed: sign the Legend/scanner agreement on account 436021893 and confirm the saved scan exists/belongs to this user so the pre-provisioned scan_id can execute."
-    },
-    {
-      "ts": "2026-06-23 10:13 ET",
+      "ts": "2026-06-23 10:30 ET",
       "priority": "INFO",
-      "code": "DRY_RUN_GATE_ARMED",
-      "detail": "Dry-run gate left ARMED (live_trading_enabled=false). The screener could not be built, so no genuine Step 6 entry evaluation occurred and the one-time dry-run pass was NOT consumed. Flag stays false so the first run that actually has a usable screener still executes as a dry run before going live."
+      "code": "SCREENER_RESOLVED",
+      "detail": "Prior SCREENER_BLOCKED condition is RESOLVED this run. SCAN_ID env this container = aa5ac5af-f053-400a-be49-5f33147bf3d6 (DIFFERENT from the 0cfa55c7-... seen by 09:30-10:13 runs, which returned AGREEMENT_NOT_SIGNED / NotFound). run_scan on the new scan_id succeeded: 'Top Most Active Movers', 200 rows. Operator evidently re-provisioned the saved scan and/or signed the agreement. Screener built normally; prior blocking alert cleared."
     },
     {
-      "ts": "2026-06-23 10:13 ET",
+      "ts": "2026-06-23 10:30 ET",
+      "priority": "INFO",
+      "code": "DRY_RUN_GATE_CONSUMED",
+      "detail": "This is the FIRST market-hours run to reach Step 6 with a usable screener, so it ran as the one-time dry run. No entry signal fired (see notes), so no real OR dry-run order was placed. Per spec, live_trading_enabled set TRUE at end of run; every subsequent run trades live with no further gating."
+    },
+    {
+      "ts": "2026-06-23 10:30 ET",
       "priority": "INFO",
       "code": "GIT_PUSH_AUTH",
-      "detail": "This run's container had an EMPTY checkout (zero local commits) AND the default remote URL (https://oauth2:@github.com/...) had no usable credential; plain push and GITHUB_TOKEN bearer both rejected. Working auth this run was basic auth with username 'x-access-token' + GITHUB_TOKEN. Fetched authoritative origin/main and hard-reset onto it before writing (no duplicate/first-run reset). If future runs cannot push, persistence across hourly invocations will silently break — operator should verify the remote credential/proxy config."
+      "detail": "RECURRING infra issue: this run's container again started with a STALE/EMPTY checkout (no state.json present locally) and the default remote URL (https://oauth2:@github.com/...) had no usable push credential. Recovered by fetching authoritative origin/main, hard-resetting onto it, then re-applying this run's updates; pushed using https with GITHUB_TOKEN env. Operator should fix the persistent remote credential + ensure the container clones current main, or cross-run persistence may silently break."
     }
   ],
-  "last_run": "2026-06-23 10:13 ET",
+  "last_run": "2026-06-23 10:30 ET",
   "notes": [
     "2026-06-22 17:54 ET (first invocation ever): state initialized with defaults; outside-hours run, no actions. Account 436021893 holds $306.13, all cash, 0 equity positions, 0 resting orders. Settled/available buying power only ~$0.80; remainder is unsettled sale proceeds.",
     "2026-06-22 17:54 ET observed external activity (left untouched per Ground Rules): ~09:30-09:32 ET, 7 user-placed market SELL orders (ANET, MRVL, VRT, CRDO, MU, CEG, NVDA) liquidated all positions previously opened by the bot on prior days. Not bot-tracked in state.json, so no reconciliation action.",
@@ -37,6 +52,7 @@
     "live_trading_enabled remains false; the one-time dry-run gate is consumed only on the first market-hours run that reaches Step 6 (entry evaluation) with a usable screener.",
     "2026-06-23 09:57 ET: subsequent MARKET-HOURS run today (Tue, regular session). date already 2026-06-23 -> NO new-day reset; equity_open_today kept at $306.13. NOTE: this run's container had a STALE checkout that lacked prior state; fetched remote main and reconciled to authoritative state before acting (no duplicate/first-run reset performed). Step 2 circuit breaker: current equity $306.13 vs open $306.13 = 0.00% -> not triggered. Steps 3/4: no tracked positions -> no volatility-halt or exit/trailing work. Step 5 screener: re-attempted run_scan -> still PermissionDenied (Legend agreement not signed) -> screener null, no universe. Step 6 entries: skipped (no universe); no real or dry-run signals. Live account verified via get_portfolio/positions/orders: $306.13, all cash, settled buying_power=$306.13, 0 equity positions, 0 resting orders, no bot-tracked or untracked holdings. Margin account 436...->493596811 (agentic_allowed=false) left untouched. No orders placed/cancelled. Circuit breaker NOT fired; no volatility halt fired.",
     "2026-06-23 10:01 ET: subsequent MARKET-HOURS run today (Tue, regular session, ~10:01 ET). date already 2026-06-23 -> NO new-day reset; equity_open_today kept at $306.13. NOTE: this run's container again had a STALE/empty checkout (local repo had zero commits); fetched authoritative remote main and reconciled to it before writing (no duplicate/first-run reset). Step 2 circuit breaker: current equity $306.13 vs open $306.13 = 0.00% -> not triggered. Steps 3/4: no tracked positions -> no volatility-halt or exit/trailing work. Step 5 screener: re-attempted run_scan(scan_id from SCAN_ID) -> still PermissionDenied (Legend agreement not signed) -> screener null, no universe. Step 6 entries: skipped (no universe); no real or dry-run signals; dry-run gate NOT consumed (stays armed, live_trading_enabled=false). Live account verified via get_portfolio/positions/orders: $306.13, all cash, settled buying_power=$306.13, 0 equity positions, 0 resting orders, no bot-tracked or untracked holdings. Margin account 493596811 (agentic_allowed=false) left untouched. No orders placed/cancelled. Circuit breaker NOT fired; no volatility halt fired.",
-    "2026-06-23 10:13 ET: subsequent MARKET-HOURS run today (Tue, regular session, 10:13 ET; UTC 14:13). date already 2026-06-23 -> NO new-day reset; equity_open_today kept at $306.13. NOTE: this run's container ALSO started with an EMPTY checkout (zero local commits) AND the remote had no working push credential by default; fetched authoritative origin/main and hard-reset onto it before writing (no duplicate/first-run reset). See GIT_PUSH_AUTH alert. Step 2 circuit breaker: current equity $306.13 vs open $306.13 = 0.00% -> not triggered. Step 3 volatility halt: no tracked positions -> nothing to check. Step 4 exits: no tracked positions -> no take-profit/stop/trailing work. Step 5 screener: re-attempted run_scan(scan_id from SCAN_ID) -> NotFound ('no rows in result set') this run -> screener null, no universe (did NOT call get_scans/create_scan per rules). Step 6 entries: skipped (no universe); no real or dry-run signals; dry-run gate NOT consumed (stays armed, live_trading_enabled=false). Live account verified via get_portfolio/positions/orders: $306.13, all cash, settled buying_power=$306.13, 0 equity positions, 0 resting orders, no bot-tracked or untracked holdings. Margin account 493596811 (agentic_allowed=false) left untouched. No orders placed/cancelled. Circuit breaker NOT fired; no volatility halt fired."
+    "2026-06-23 10:13 ET: subsequent MARKET-HOURS run today (Tue, regular session, 10:13 ET; UTC 14:13). date already 2026-06-23 -> NO new-day reset; equity_open_today kept at $306.13. NOTE: this run's container ALSO started with an EMPTY checkout (zero local commits) AND the remote had no working push credential by default; fetched authoritative origin/main and hard-reset onto it before writing (no duplicate/first-run reset). See GIT_PUSH_AUTH alert. Step 2 circuit breaker: current equity $306.13 vs open $306.13 = 0.00% -> not triggered. Step 3 volatility halt: no tracked positions -> nothing to check. Step 4 exits: no tracked positions -> no take-profit/stop/trailing work. Step 5 screener: re-attempted run_scan(scan_id from SCAN_ID) -> NotFound ('no rows in result set') this run -> screener null, no universe (did NOT call get_scans/create_scan per rules). Step 6 entries: skipped (no universe); no real or dry-run signals; dry-run gate NOT consumed (stays armed, live_trading_enabled=false). Live account verified via get_portfolio/positions/orders: $306.13, all cash, settled buying_power=$306.13, 0 equity positions, 0 resting orders, no bot-tracked or untracked holdings. Margin account 493596811 (agentic_allowed=false) left untouched. No orders placed/cancelled. Circuit breaker NOT fired; no volatility halt fired.",
+    "2026-06-23 10:30 ET: MARKET-HOURS run (Tue, regular session, ~10:24-10:30 ET; UTC 14:24). Container again started with an EMPTY checkout; fetched authoritative origin/main (was at 10:13 ET state) and reconciled onto it before writing (no first-run reset). date already 2026-06-23 -> NO new-day reset; equity_open_today kept $306.13. Account verified: get_portfolio total $306.13, all cash, settled buying_power $306.13, 0 equity positions, 0 resting orders, no bot-tracked or untracked holdings (margin acct 493596811 agentic_allowed=false, left untouched). Step 2 circuit breaker: $306.13 vs open $306.13 = 0.00% -> not fired. Step 3 volatility halt: no tracked positions -> nothing. Step 4 exits: no tracked positions -> nothing. Step 5 screener: BUILT (SCAN_ID=aa5ac5af-... now works; see SCREENER_RESOLVED). 200-row scan -> Stage2 hard filters (mktcap>5B via scan col, then get_equity_historicals daily: avg_vol_20d>5M, ATR14>2.5%) -> survivors MRNA, QBTS (both also mktcap>5B, fractional-eligible per get_equity_tradability). Stored to screener. Step 6 entries (DRY-RUN GATE, first usable Step6 ever): evaluated both survivors. MRNA: Momentum fails (last 63.54 < prior-day high 65.51); Dip fails (63.54 is 6.2% below 5-day intraday high 67.74, outside 3.5-5.0% band). QBTS: Dip fails (26.175 only 2.0% below incl-today 5-day intraday high 26.71, outside band); Momentum price-leg passes (26.175 > prior-day high 25.635) but VOLUME-leg fails (cum vol-by-this-time 7.46M vs 20-day avg 5.29M = 1.41x, < 1.5x threshold). NO signals fired -> no real or dry-run orders. live_trading_enabled set TRUE (gate consumed). Circuit breaker NOT fired; no volatility halt fired. Settled cash basis: full $306.13 settled (Mon sales settled T+1), but moot as no entry triggered."
   ]
 }
