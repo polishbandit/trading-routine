@@ -1,47 +1,78 @@
 {
-  "date": "2026-06-23",
+  "date": "2026-06-25",
   "account_number": "436021893",
   "live_trading_enabled": true,
   "halted_date": null,
-  "equity_open_today": 306.13,
+  "equity_open_today": 309.51,
   "screener": [
-    {
-      "ticker": "MRNA",
-      "ema_20d": 52.51,
-      "atr_14d_pct": 7.24,
-      "avg_vol_20d": 7170000,
-      "fractional_eligible": true
-    },
-    {
-      "ticker": "QBTS",
-      "ema_20d": 24.61,
-      "atr_14d_pct": 10.46,
-      "avg_vol_20d": 41900000,
-      "fractional_eligible": true
-    }
+    { "ticker": "BB",   "ema_20d": 8.62,    "atr_14d_pct": 8.14,  "avg_vol_20d": 43487404, "fractional_eligible": true },
+    { "ticker": "SNDK", "ema_20d": 1848.74, "atr_14d_pct": 8.83,  "avg_vol_20d": 10876481, "fractional_eligible": true },
+    { "ticker": "MU",   "ema_20d": 989.05,  "atr_14d_pct": 8.52,  "avg_vol_20d": 56806090, "fractional_eligible": true },
+    { "ticker": "QCOM", "ema_20d": 213.81,  "atr_14d_pct": 8.98,  "avg_vol_20d": 22024939, "fractional_eligible": true },
+    { "ticker": "WDC",  "ema_20d": 605.22,  "atr_14d_pct": 7.87,  "avg_vol_20d": 8982655,  "fractional_eligible": true },
+    { "ticker": "STM",  "ema_20d": 72.93,   "atr_14d_pct": 6.34,  "avg_vol_20d": 14073528, "fractional_eligible": true },
+    { "ticker": "TEM",  "ema_20d": 49.49,   "atr_14d_pct": 7.03,  "avg_vol_20d": 7362014,  "fractional_eligible": true },
+    { "ticker": "AMD",  "ema_20d": 501.35,  "atr_14d_pct": 6.48,  "avg_vol_20d": 31412383, "fractional_eligible": true },
+    { "ticker": "GLW",  "ema_20d": 188.70,  "atr_14d_pct": 7.60,  "avg_vol_20d": 13621517, "fractional_eligible": true },
+    { "ticker": "INTC", "ema_20d": 121.63,  "atr_14d_pct": 7.70,  "avg_vol_20d": 133516978,"fractional_eligible": true },
+    { "ticker": "COHR", "ema_20d": 385.32,  "atr_14d_pct": 9.25,  "avg_vol_20d": 6235479,  "fractional_eligible": true },
+    { "ticker": "CRDO", "ema_20d": 244.17,  "atr_14d_pct": 9.60,  "avg_vol_20d": 9912275,  "fractional_eligible": true },
+    { "ticker": "VRT",  "ema_20d": 320.47,  "atr_14d_pct": 6.62,  "avg_vol_20d": 6343840,  "fractional_eligible": true },
+    { "ticker": "GFS",  "ema_20d": 80.97,   "atr_14d_pct": 6.38,  "avg_vol_20d": 5381754,  "fractional_eligible": true },
+    { "ticker": "ALAB", "ema_20d": 356.25,  "atr_14d_pct": 8.42,  "avg_vol_20d": 6520556,  "fractional_eligible": true },
+    { "ticker": "FRMI", "ema_20d": 7.38,    "atr_14d_pct": 10.04, "avg_vol_20d": 19691886, "fractional_eligible": true },
+    { "ticker": "FLEX", "ema_20d": 146.87,  "atr_14d_pct": 6.29,  "avg_vol_20d": 9541364,  "fractional_eligible": true },
+    { "ticker": "BE",   "ema_20d": 292.34,  "atr_14d_pct": 8.36,  "avg_vol_20d": 10897522, "fractional_eligible": true },
+    { "ticker": "AMAT", "ema_20d": 539.06,  "atr_14d_pct": 5.85,  "avg_vol_20d": 9963310,  "fractional_eligible": true },
+    { "ticker": "NBIS", "ema_20d": 246.92,  "atr_14d_pct": 10.09, "avg_vol_20d": 18223485, "fractional_eligible": true },
+    { "ticker": "VSH",  "ema_20d": 56.50,   "atr_14d_pct": 10.12, "avg_vol_20d": 9166515,  "fractional_eligible": true },
+    { "ticker": "KLAC", "ema_20d": 228.23,  "atr_14d_pct": 6.36,  "avg_vol_20d": 13425483, "fractional_eligible": true },
+    { "ticker": "QXO",  "ema_20d": 16.81,   "atr_14d_pct": 6.12,  "avg_vol_20d": 17109599, "fractional_eligible": true },
+    { "ticker": "RKT",  "ema_20d": 13.70,   "atr_14d_pct": 6.47,  "avg_vol_20d": 29942260, "fractional_eligible": true }
   ],
-  "screener_date": "2026-06-23",
+  "screener_date": "2026-06-25",
+  "screener_meta": {
+    "scan_id": "aa5ac5af-f053-400a-be49-5f33147bf3d6",
+    "scan_title": "Top Most Active Movers",
+    "scan_total_items": 261,
+    "scan_rows_returned": 200,
+    "stage2_avg_vol_basis": "30-day average daily volume from get_equity_fundamentals (used as ADV; threshold >5,000,000 shares)",
+    "note": "INIO matched mktcap+ADV but was EXCLUDED: only 14 real daily bars (recent listing) -> cannot compute 14-day ATR / 20-day EMA precisely. STX/TER failed 30-day ADV>5M. Scan returned 200/261 rows (61 untruncated, mostly small-caps); see SCAN_TRUNCATION alert."
+  },
   "positions": [],
   "alerts": [
     {
-      "ts": "2026-06-25 09:23 ET",
+      "ts": "2026-06-25 09:43 ET",
       "priority": "HIGH",
       "code": "UNTRACKED_BOT_POSITIONS_PERSISTENCE_FAILURE",
-      "detail": "MAJOR DISCREPANCY discovered this run. Order history shows this bot (placed_agent=agentic) traded LIVE on 2026-06-24 but NONE of it was ever persisted to state.json (state.date still 2026-06-23, positions still empty, last_run was only the 06-24 09:01 pre-market run). The 06-24 MARKET-HOURS runs evidently placed orders then failed to write/commit state back -- consistent with the recurring empty-checkout / missing-push-credential infra issue (see GIT_PUSH_AUTH). RECONSTRUCTION from get_equity_orders: (1) UMC bot-bought 0.673883sh @27.26 (13:35Z), USER market-sold @28.625 (06-24 16:17) -> closed. (2) RKT bot-bought 1.287316sh @14.27 (13:35Z), USER market-sold @15.26 (06-24 16:16); bot then bought 1sh @15.01 (18:08Z) with agentic exit limits that were CANCELLED, USER limit-sold remaining 1sh @14.86 (06-25 11:59 ext-hrs) -> closed. (3) COMP bot-bought 2sh @10.6699 (06-24 15:11), agentic STOP-LOSS resting GTC stop10.30/limit10.14 (=-3.5%/-5.0%, qty2) state=confirmed; NO take-profit (+6%) leg was ever placed. (4) AAL bot-bought 2sh @17.26 (06-24 16:11), agentic STOP-LOSS resting GTC stop16.66/limit16.40 (=-3.5%/-5.0%, qty2) state=confirmed; NO take-profit (+6%) leg was ever placed. CURRENT live account (cash acct 436021893): total_value $308.63, equity_value $56.32, cash $252.31, buying_power $237.45; holdings COMP 2sh + AAL 2sh, both fully held_for_sells by their agentic resting stops. ACTION TAKEN: Per Ground Rules, bot only manages positions opened AND recorded in state.positions (empty); COMP/AAL are NOT recorded and reconstructing faithful records would require guessing (missing TP legs, unknown phase/peak), which the prompt forbids -> LEFT COMP/AAL AND their resting stop orders COMPLETELY UNTOUCHED. Also this run is OUTSIDE-HOURS (pre-market) so no management would occur regardless. OPERATOR DECISION NEEDED: either (a) manually add COMP/AAL to state.positions if you want the bot to manage/exit them (note their brackets are incomplete -- stop-loss only, no take-profit), or (b) continue managing them yourself. Underlying root cause to fix: container persistence/push so market-hours runs don't place live orders without recording them."
+      "detail": "STILL OPEN (reaffirmed this market-hours run). Account holds two positions this bot opened on 2026-06-24 but that were NEVER persisted to state.positions (06-24 market-hours runs placed live orders then failed to commit state -- see GIT_PUSH_AUTH root cause). CURRENT (06-25 ~09:41 ET): COMP 2sh (avg 10.67), live ~10.83, with agentic resting GTC stop-limit sell stop 10.30 / limit 10.14 (order 6a3bf3cf...), state=confirmed; NO take-profit (+6%) leg ever placed. AAL 2sh (avg 17.26), live ~17.69, with agentic resting GTC stop-limit sell stop 16.66 / limit 16.40 (order 6a3c01c6...), state=confirmed; NO take-profit (+6%) leg ever placed. Per Ground Rules the bot only manages positions opened AND recorded in state.positions; these are NOT recorded and faithfully adopting them would require GUESSING the missing entry metadata (phase, peak_price, the missing TP legs) which the prompt forbids -> LEFT COMP/AAL AND their resting stops COMPLETELY UNTOUCHED again this run (no stops added, no TP added, no liquidation, not adopted). OPERATOR DECISION STILL NEEDED: (a) manually add COMP/AAL to state.positions (with chosen entry price/phase) if you want the bot to manage/exit them -- note brackets are stop-loss-only, no take-profit; or (b) keep managing them yourself. Root cause to fix: container persistence/push reliability so market-hours runs cannot place live orders without recording them."
     },
     {
-      "ts": "2026-06-23 14:01 ET",
+      "ts": "2026-06-25 09:43 ET",
+      "priority": "MEDIUM",
+      "code": "ENTRY_SIZING_BLOCKED_ACCOUNT_TOO_SMALL",
+      "detail": "Structural condition: per-position budget = 6% x total account equity ($309.51) = $18.57, and the rules require a MINIMUM of 2 whole shares per entry. 23 of 24 screener survivors are too expensive to buy 2 shares within $18.57 (cheapest 2-share lots: BB ~$20.7, QXO ~$35, RKT ~$30, all others far higher) -> max affordable whole shares = 0 or 1 < 2 -> any signal on them is non-actionable and skipped per the 'minimum 2 shares' guardrail. The ONLY survivor affordable at 2 shares is FRMI (ask ~$8.31 -> 2sh=$16.62), but FRMI fired NO entry signal this run (momentum: 8.29<prior-day high 9.08; dip: 18.2% below 5-day intraday high 10.13, outside 3.5-5.0% band). Net: 0 entries possible this run on sizing grounds even before volume-leg confirmation. Operator should note the account size makes most large-cap movers untradeable under the 6%/2-share rule."
+    },
+    {
+      "ts": "2026-06-25 09:43 ET",
+      "priority": "LOW",
+      "code": "SCAN_TRUNCATION",
+      "detail": "run_scan('Top Most Active Movers') reported total_items=261 but returned only 200 instrument rows; the remaining 61 were not retrievable via the tool. The top of the returned set is dominated by small-caps; 52 of the 200 had mktcap>5B and were fully Stage-2 screened. Some of the 61 untruncated rows could in principle have been large-cap survivors but were not available to screen. Did NOT call get_scans/create_scan (per Step 5 rules). Documented for transparency."
+    },
+    {
+      "ts": "2026-06-25 09:43 ET",
       "priority": "INFO",
       "code": "GIT_PUSH_AUTH",
-      "detail": "RECURRING infra issue: containers have started with an EMPTY checkout (no local state.json) and the default remote URL https://oauth2:@github.com/... has NO usable push credential. WORKING RECOVERY: (1) fetch authoritative origin/main, hard-reset onto it, re-apply the run; (2) push via token-embedded URL https://x-access-token:$GITHUB_TOKEN@github.com/polishbandit/trading-routine.git with the proxy bypassed (git -c http.proxy= ...), since the url.insteadOf rewrite to local_proxy returns 403 and the bare oauth2:@ URL is rejected by GitHub. NOTE: this same infra issue is the likely root cause of the 06-24 live-trades-not-persisted failure above. This 06-25 run started with a HEALTHY checkout in sync with origin/main."
+      "detail": "RECURRING infra issue: containers may start with a STALE/empty checkout and the default remote URL has no usable push credential. THIS RUN: container started at a STALE local HEAD (a4c66d5 = 06-24 09:01 state) that was BEHIND authoritative origin/main (d8dd497 = 06-25 09:23 state, which contained the 06-24 persistence-failure discovery). Recovered by fetching origin/main with proxy bypass and hard-resetting onto it BEFORE acting, so this run built on the correct authoritative state. Push via: git -c http.proxy= push https://x-access-token:$GITHUB_TOKEN@github.com/polishbandit/trading-routine.git (the url.insteadOf local_proxy rewrite returns 403; bare oauth2:@ URL is rejected). Operator should fix persistent remote credential + guarantee containers clone current main."
     }
   ],
-  "last_run": "2026-06-25 09:23 ET",
+  "last_run": "2026-06-25 09:43 ET",
   "notes": [
-    "2026-06-22 17:54 ET (first invocation ever): state initialized with defaults; outside-hours run, no actions. Account 436021893 $306.13 all cash, 0 positions, 0 resting orders.",
-    "2026-06-23: multiple runs. Screener BLOCKED early (Legend agreement / scan_id issues) then RESOLVED at 10:30 ET when SCAN_ID=aa5ac5af-... began working -> built MRNA/QBTS universe. First usable Step6 (10:30) ran as the one-time DRY RUN; no signal fired; live_trading_enabled set TRUE. Remaining 06-23 market-hours runs (12:19, 14:01): no entry signals (MRNA/QBTS dip & momentum legs all failed); account stayed $306.13 all cash. Recurring empty-checkout/no-push-credential infra issue handled via fetch-origin/main + token-URL push each run.",
-    "2026-06-24 09:01 ET: OUTSIDE-HOURS pre-market run (Wed). date intentionally left at 2026-06-23 for the open-capture convention. Account verified $306.13 all cash, 0 positions, 0 resting orders. Healthy checkout this run. This was the LAST successfully-persisted run before the 06-25 discrepancy.",
-    "2026-06-24 (MARKET HOURS) -- INFERRED FROM ORDER HISTORY ONLY, NEVER PERSISTED TO STATE: this bot (agentic) placed live trades that were never written back to state.json (see HIGH alert UNTRACKED_BOT_POSITIONS_PERSISTENCE_FAILURE). Bought/exited UMC and RKT (both ultimately closed by user sells), and opened COMP 2sh @10.67 and AAL 2sh @17.26 each with an agentic -3.5%/-5.0% stop-loss (no +6% take-profit leg). The market-hours runs apparently could not persist/commit state (infra issue), so state.json missed an entire trading day of activity. This is the core open problem for the operator.",
-    "2026-06-25 09:23 ET: OUTSIDE-HOURS run (Thu, PRE-MARKET, 09:23 ET, before 9:30 open; UTC ~13:23). Per Step 0 outside-hours branch: SCREENER/ENTRY/circuit-breaker SKIPPED; state.positions empty -> NO trailing-stop work. GIT: container started with a HEALTHY checkout at origin/main (a4c66d5 = 06-24 09:01 state), working tree clean. Account verified via get_portfolio/get_equity_positions/get_equity_orders: cash acct 436021893 total_value $308.63, equity_value $56.32, cash $252.31, buying_power $237.45; live holdings COMP 2sh (avg 10.67) + AAL 2sh (avg 17.26), both fully held_for_sells by agentic resting GTC stop-losses (COMP stop10.30/limit10.14; AAL stop16.66/limit16.40), both state=confirmed. These are NOT in state.positions -> treated as UNTRACKED per Ground Rules and LEFT COMPLETELY UNTOUCHED (no stops added, no liquidation, not adopted into state -- adopting would require guessing forbidden by the prompt). Raised HIGH alert documenting the 06-24 persistence failure for operator decision. date INTENTIONALLY kept at 2026-06-23 so first market-hours run today triggers Step 1 new-day reset and captures equity_open_today at the regular-session open. screener still holds 06-23 MRNA/QBTS list (will be cleared by market-hours new-day reset). No orders placed/cancelled this run. Circuit breaker NOT evaluated (outside hours); no volatility halt fired. Margin acct 493596811 (agentic_allowed=false) untouched."
+    "2026-06-22 17:54 ET (first invocation ever): state initialized; outside-hours; $306.13 all cash, 0 positions.",
+    "2026-06-23: screener BLOCKED early (scan/agreement) then RESOLVED 10:30 ET (SCAN_ID aa5ac5af-...). First usable Step6 (10:30) was the one-time DRY RUN; no signal; live_trading_enabled set TRUE. No entries all day; account stayed $306.13 all cash.",
+    "2026-06-24 09:01 ET: outside-hours pre-market; LAST cleanly-persisted run before the 06-24 market-hours persistence failure.",
+    "2026-06-24 (MARKET HOURS) -- INFERRED FROM ORDER HISTORY, NEVER PERSISTED: bot traded live (UMC, RKT both later closed by user sells; opened COMP 2sh @10.67 and AAL 2sh @17.26 each with a -3.5%/-5.0% stop-loss, no +6% TP) but state was never committed. Core open problem (see UNTRACKED_BOT_POSITIONS_PERSISTENCE_FAILURE).",
+    "2026-06-25 09:23 ET: outside-hours pre-market run that DISCOVERED the 06-24 persistence failure, reconstructed COMP/AAL from order history, left them untouched, raised the HIGH alert, and (correctly) kept date at 2026-06-23 so the first market-hours run would do the new-day reset. Authoritative state (origin/main d8dd497) this 09:43 run built on.",
+    "2026-06-25 09:43 ET: FIRST MARKET-HOURS run of the new trading day (Thu, regular session, ~09:34-09:43 ET; UTC ~13:43). GIT: local checkout was STALE (HEAD a4c66d5, behind origin/main d8dd497); fetched + hard-reset onto authoritative origin/main before acting (see GIT_PUSH_AUTH). STEP 1 new-day reset: date 2026-06-23 -> 2026-06-25; equity_open_today set to current total account equity $309.51 (broker total incl. untracked COMP/AAL, per Operator Decision 1) as circuit-breaker baseline; halted_date stays null; screener cleared then rebuilt. Reconcile: state.positions empty (no tracked positions); live untracked COMP 2sh + AAL 2sh left untouched (see HIGH alert). STEP 2 circuit breaker: $309.51 vs open $309.51 = 0.00% -> NOT fired. STEP 3 volatility halt: no tracked positions -> nothing. STEP 4 exits: no tracked positions -> no TP/SL/trailing work. STEP 5 screener REBUILT: run_scan(aa5ac5af-...) 'Top Most Active Movers' 261 items/200 returned -> Stage2 (mktcap>5B from scan: 52; then ADV>5M via fundamentals 30-day avg, ATR14>2.5% via daily historicals) -> 24 survivors; INIO excluded (insufficient history); all 24 fractional-eligible (Stage3). STEP 6 entries (LIVE; dry-run gate already consumed 06-23): NO entry taken. Sizing: 6% x $309.51 = $18.57/position, min 2 shares -> only FRMI affordable at 2sh ($16.62) but FRMI fired no signal (momentum 8.29<prior-day high 9.08; dip 18.2% below 5d intraday high 10.13). All other survivors' momentum price-legs that passed are non-actionable (cannot meet 2-share minimum) -> ENTRY_SIZING_BLOCKED alert. Settled cash (buying_power $237.45) ample but moot. NO orders placed/cancelled. Circuit breaker NOT fired; no volatility halt fired. Margin acct 493596811 (agentic_allowed=false) untouched."
   ]
 }
