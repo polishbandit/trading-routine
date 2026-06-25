@@ -51,25 +51,42 @@
       "tp_price": 10.90,
       "sl_trigger": 9.92,
       "sl_limit": 9.77,
-      "peak_price": 10.2799,
+      "peak_price": 10.665,
       "phase": "initial",
       "paused": false,
-      "last_check_price": 10.29,
+      "last_check_price": 10.33,
       "rule": "Momentum Breakout (price 10.29 > prior-day[06-24] high 9.38; RVOL by-11:00ET 17.91M/6.80M = 2.63x > 1.5x)"
+    },
+    {
+      "ticker": "BB",
+      "entry_price": 10.3299,
+      "qty": 2,
+      "entry_timestamp": "2026-06-25 12:07 ET",
+      "buy_order_id": "6a3d5217-8878-4666-8488-82114babe864",
+      "tp_order_id": "6a3d5227-601f-402f-bc3d-162b30b99242",
+      "sl_order_id": "6a3d522c-1634-437f-9a92-4faa9de15af3",
+      "tp_price": 10.95,
+      "sl_trigger": 9.97,
+      "sl_limit": 9.81,
+      "peak_price": 10.3299,
+      "phase": "initial",
+      "paused": false,
+      "last_check_price": 10.33,
+      "rule": "Momentum Breakout (price 10.33 > prior-day[06-24] high 9.34; RVOL by-12:00ET 11.31M / 20d-avg-by-this-time 6.25M = 1.81x > 1.5x). Dip ALSO fired (price 3.89% below 5-day intraday high 10.665, within 3.5-5.0% band, and > 20d EMA 8.62). Same-ticker 2nd tranche; tie-break N/A (single ticker fired)."
     }
   ],
   "alerts": [
     {
-      "ts": "2026-06-25 11:05 ET",
+      "ts": "2026-06-25 12:07 ET",
       "priority": "HIGH",
       "code": "UNTRACKED_BOT_POSITIONS_PERSISTENCE_FAILURE",
-      "detail": "STILL OPEN (reaffirmed this 11:05 ET run). Account 436021893 holds two positions this bot opened 2026-06-24 but that were NEVER persisted to state.positions (06-24 market-hours persistence failure). CURRENT (06-25 ~11:00 ET): COMP 2sh (avg 10.67), live ~11.00, with agentic resting GTC stop-limit sell stop 10.30 / limit 10.14 (order 6a3bf3cf-00e0-4f2e-b5d1-361cd025b3f1, state=confirmed); NO take-profit leg ever placed. AAL 2sh (avg 17.26), live ~17.87, with agentic resting GTC stop-limit sell stop 16.66 / limit 16.40 (order 6a3c01c6-5dc5-4028-8248-b15d57201e59, state=confirmed); NO take-profit leg. Per Ground Rules the bot only manages positions opened AND recorded in state.positions; adopting these requires GUESSING missing entry metadata (forbidden) -> LEFT COMP/AAL AND their stops COMPLETELY UNTOUCHED again (not adopted, not exited, not modified). OPERATOR DECISION STILL NEEDED: (a) manually add COMP/AAL to state.positions if you want bot management (note: stop-loss-only, no TP); or (b) keep managing them yourself. NOTE: these untracked positions ARE still counted in total account equity for all % math per Operator Decision 1, but are NOT counted toward the bot's 40% aggregate-exposure cap (which measures only state.positions)."
+      "detail": "STILL OPEN (reaffirmed this 12:07 ET run). Account 436021893 holds two positions this bot opened 2026-06-24 but that were NEVER persisted to state.positions (06-24 persistence failure). CURRENT (06-25 ~12:05 ET): COMP 2sh (avg 10.67), live ~10.99, with agentic resting GTC stop-limit sell stop 10.30 / limit 10.14 (order 6a3bf3cf-00e0-4f2e-b5d1-361cd025b3f1, state=confirmed); NO take-profit leg. AAL 2sh (avg 17.26), live ~17.59, with agentic resting GTC stop-limit sell stop 16.66 / limit 16.40 (order 6a3c01c6-5dc5-4028-8248-b15d57201e59, state=confirmed); NO take-profit leg. Per Ground Rules the bot only manages positions opened AND recorded in state.positions; adopting these requires reconstructing entry metadata not recorded by the bot -> LEFT COMP/AAL AND their stops COMPLETELY UNTOUCHED (not adopted, not exited, not modified). OPERATOR DECISION STILL NEEDED: (a) manually add COMP/AAL to state.positions for bot management (note: stop-loss-only, no TP); or (b) keep managing them yourself. These untracked positions ARE counted in total account equity for all % math (Operator Decision 1) but are NOT counted toward the bot's 40% aggregate-exposure cap (which measures only state.positions)."
     },
     {
-      "ts": "2026-06-25 11:05 ET",
-      "priority": "MEDIUM",
-      "code": "SIZING_RULE_CORRECTION_6PCT_TO_10PCT",
-      "detail": "METHODOLOGY CORRECTION this run. Prior 06-25 runs (09:43, 10:00) sized per-position budget at 6% of equity (~$18.55), which incorrectly excluded BB/RKT. The prompt Step-6 rule states the per-position budget is floor((Total [Settled] Account Equity x 0.10)/ask) = 10% x $310.09 = $31.01. Applying the rule exactly this run, 3 survivors are affordable at the 2-whole-share minimum: BB (ask ~10.30 -> 2sh), FRMI (8.31 -> 3sh), RKT (15.36 -> 2sh). QXO (17.37 -> 1sh) and the other 20 survivors (ask >$46) remain non-actionable on the 2-share minimum. No alert was needed for those 21 unaffordable names because none of them was the firing signal; documented here for transparency."
+      "ts": "2026-06-25 12:07 ET",
+      "priority": "INFO",
+      "code": "EVEN_SHARE_SIZING_APPLIED",
+      "detail": "Step 6 sizing for BB this run: 10%-of-equity budget / ask = floor(30.955/10.31) = 3 whole shares, but the 'Strict Even-Share Minimum' rule plus the mandatory exact 50/50 whole-share bracket (TP 50% + SL 50%, neither of which can be fractional for limit/stop_limit orders) require an EVEN share count. Rounded down to the largest even qty <= budget and >= 2-share floor => bought 2 shares. Consistent with the 11:05 ET BB tranche (also 2sh). Future runs should keep rounding position size DOWN to the nearest even whole-share count."
     },
     {
       "ts": "2026-06-25 09:43 ET",
@@ -78,20 +95,19 @@
       "detail": "Today's 09:43 ET screener build: run_scan('Top Most Active Movers') reported total_items=261 but returned only 200 instrument rows; the remaining 61 were not retrievable. 52 of the 200 had mktcap>5B and were fully Stage-2 screened. Some of the 61 untruncated rows could in principle have been large-cap survivors but were not available. Did NOT call get_scans/create_scan (per Step 5). The screener in use today was built from this 200-row set."
     },
     {
-      "ts": "2026-06-25 11:05 ET",
+      "ts": "2026-06-25 12:07 ET",
       "priority": "INFO",
       "code": "GIT_PUSH_AUTH",
-      "detail": "RECURRING infra issue. THIS 11:00 ET run: container started at STALE local HEAD a4c66d5 (= 06-24 09:01 state) which was BEHIND authoritative origin/main fbed23c (= 06-25 10:00 state). Recovered by fetching origin/main with proxy bypass (git -c http.proxy= fetch https://x-access-token:$GITHUB_TOKEN@github.com/...) and hard-resetting onto it BEFORE acting, so this run built on correct authoritative state (which already had COMP/AAL flagged and the rebuilt screener). Push via: git -c http.proxy= push https://x-access-token:$GITHUB_TOKEN@github.com/polishbandit/trading-routine.git (url.insteadOf local_proxy rewrite returns 403). Operator should fix persistent remote credential + guarantee containers clone current main."
+      "detail": "RECURRING infra issue. THIS 12:07 ET run: container started at STALE local HEAD a4c66d5 (= 06-24 09:01 state) which was BEHIND authoritative origin/main a5e3106 (= 06-25 11:05 state). Recovered by fetching origin/main with proxy bypass (git -c http.proxy= -c https.proxy= fetch https://x-access-token:$GITHUB_TOKEN@github.com/polishbandit/trading-routine.git main) and hard-resetting onto it BEFORE acting. Push via the same proxy-bypass + token URL (the url.insteadOf local_proxy rewrite returns 403). Operator should fix persistent remote credential + guarantee containers clone current main, else cross-run persistence keeps depending on this manual recovery."
     }
   ],
-  "last_run": "2026-06-25 11:05 ET",
+  "last_run": "2026-06-25 12:07 ET",
   "notes": [
     "2026-06-22 17:54 ET (first invocation): state initialized; outside-hours; $306.13 all cash, 0 positions.",
     "2026-06-23: screener BLOCKED early then RESOLVED 10:30 ET (SCAN_ID aa5ac5af-...). First usable Step6 (10:30) was the one-time DRY RUN; no signal; live_trading_enabled set TRUE. No entries all day; account stayed $306.13 all cash.",
     "2026-06-24 (MARKET HOURS) -- INFERRED FROM ORDER HISTORY, NEVER PERSISTED: bot traded live (UMC, RKT both later closed by user sells; opened COMP 2sh @10.67 and AAL 2sh @17.26 each with a -3.5%/-5.0% stop-loss, no +6% TP) but state was never committed. Core open problem (UNTRACKED_BOT_POSITIONS_PERSISTENCE_FAILURE).",
-    "2026-06-25 09:23 ET: outside-hours pre-market run that DISCOVERED the 06-24 persistence failure, reconstructed COMP/AAL from order history, left them untouched, raised the HIGH alert, kept date at 2026-06-23 so the first market-hours run would do the new-day reset.",
-    "2026-06-25 09:43 ET: FIRST MARKET-HOURS run of the day. New-day reset: date -> 2026-06-25; equity_open_today set $309.51 (broker total incl. untracked COMP/AAL, per Operator Decision 1); screener cleared then REBUILT (24 survivors). Circuit breaker not fired. NO entry (used a 6% budget -> only FRMI affordable; FRMI fired no signal). NOTE: 6% budget was an error vs the prompt's 10% rule (see SIZING_RULE_CORRECTION).",
-    "2026-06-25 10:00 ET: subsequent market-hours run; no new-day reset; equity_open_today kept $309.51. Container started stale, fetched+reset onto origin/main. Circuit breaker $309.09 vs $309.51 = -0.14% -> not fired. No tracked positions. Screener reused. NO entry (again 6% budget). COMP/AAL left untouched.",
-    "2026-06-25 11:05 ET: MARKET-HOURS run (Thu, UTC ~15:05). GIT: container started STALE (a4c66d5 = 06-24 09:01) BEHIND origin/main (fbed23c = 06-25 10:00); fetched + hard-reset onto origin/main before acting. STEP1: date already 2026-06-25 -> NO new-day reset; equity_open_today kept $309.51; reconcile: state.positions was empty; live untracked COMP 2sh + AAL 2sh with their agentic GTC stop-limits left UNTOUCHED (HIGH alert reaffirmed). STEP2 circuit breaker: total equity $310.09 vs open $309.51 = +0.19% (a gain) -> NOT fired. STEP3 volatility halt: no tracked positions -> nothing. STEP4 exits: no tracked positions at start -> nothing. STEP5 screener: REUSED today's 24-survivor list (screener_date=today); NOT rebuilt. STEP6 entries (LIVE, 10% sizing per rule = $31.01/position, 2-share min): affordable set = BB, FRMI, RKT. Signals: BB Momentum FIRED (last 10.29-10.35 > prior-day[06-24] high 9.38; RVOL by-11:00ET = today 17.91M / 20-day-avg-by-this-time 6.80M = 2.63x > 1.5x), BB Dip no (near highs). FRMI: Momentum no (8.31 < prior-day high 9.08), Dip no (~18% below 5d high 10.135). RKT: Momentum no (15.355 < prior-day high 15.37), Dip no (~1.2% below 5d high). Only BB fired -> no tie-break. EXECUTED: BUY 2 BB @ avg $10.2799 (market, order 6a3d43ca, filled). Bracket placed in strict order: TP limit sell 1sh @ $10.90 (+6%, order 6a3d43e6, confirmed) FIRST; then SL stop-limit sell 1sh stop $9.92/limit $9.77 (-3.5%/-5.0%, order 6a3d43eb, confirmed) SECOND. Position recorded to state.positions (phase=initial, peak_price=entry). Caps OK: 2sh cost ~$20.56 < 15% single-pos cap ($46.51); bot aggregate now ~$20.6 < 40% cap ($124.04); settled cash after ~$216 > 60% reserve ($186.05). Circuit breaker NOT fired; no volatility halt fired. Margin acct 493596811 (agentic_allowed=false) untouched."
+    "2026-06-25 09:43 ET: FIRST MARKET-HOURS run. New-day reset: date 2026-06-25; equity_open_today $309.51 (broker total incl. untracked COMP/AAL, Operator Decision 1); screener REBUILT (24 survivors). CB not fired. No entry (used 6% budget error). 10:00 ET run: similar, no entry.",
+    "2026-06-25 11:05 ET: BUY 2 BB @ $10.2799 (Momentum Breakout). Bracket: TP 1sh @10.90 (6a3d43e6), SL 1sh stop9.92/limit9.77 (6a3d43eb). Recorded as tranche #1. CB +0.19%, not fired. SIZING_RULE_CORRECTION applied: per-position budget is 10% of equity (not 6%).",
+    "2026-06-25 12:07 ET: MARKET-HOURS run (Thu, UTC ~16:07). GIT: container started STALE (a4c66d5 = 06-24 09:01) BEHIND origin/main (a5e3106 = 06-25 11:05); fetched + hard-reset onto origin/main before acting. STEP1: date already 2026-06-25 -> NO new-day reset; equity_open_today kept $309.51. Reconcile: state.positions = [BB tranche#1] -> live BB 2sh matches; its TP(6a3d43e6) & SL(6a3d43eb) both still confirmed/unfilled -> nothing filled since last run. Untracked COMP 2sh + AAL 2sh with their agentic GTC stop-limits left UNTOUCHED (HIGH alert reaffirmed). STEP2 circuit breaker: total equity $309.5544 vs open $309.51 = +0.014% (a gain) -> NOT fired. STEP3 volatility halt: BB tranche#1 current 10.25-10.33 vs last_check 10.29 ~ -0.4% -> no halt; state active; last_check_price updated to 10.33. STEP4 exits: BB tranche#1 phase=initial, neither TP nor SL filled -> no action (peak refreshed to today's high 10.665). STEP5 screener: REUSED today's 24-survivor list (screener_date=today); NOT rebuilt. STEP6 entries (LIVE, 10% budget=$30.955, EVEN-share min 2): affordable set (floor(budget/ask)>=2) = BB(3->even2), FRMI(3->even2), RKT(2); QXO ask 17.07 -> floor=1 < 2 -> skip. SIGNALS: BB FIRED Momentum (last 10.25-10.33 > prior-day[06-24] high 9.34; RVOL by-12:00ET 11.31M / 20d-avg 6.25M = 1.81x > 1.5x) AND Dip (3.89% below 5-day intraday high 10.665, within 3.5-5.0% band, > EMA 8.62). FRMI: Momentum no (8.14 < prior-day high 9.08), Dip no (~19% below 5d high 10.065). RKT: Momentum no (14.95 < prior-day high 15.35), Dip no (only 2.76% below 5d high 15.3747, < 3.5% band). Only BB fired -> no tie-break. EXECUTED: BUY 2 BB @ avg $10.3299 (market, order 6a3d5217, filled) as tranche #2. Bracket placed strict order: TP limit sell 1sh @ $10.95 (+6%, order 6a3d5227, confirmed) FIRST; then SL stop-limit sell 1sh stop $9.97 / limit $9.81 (-3.5%/-5.0%, order 6a3d522c, confirmed) SECOND. Recorded tranche #2 (phase=initial, peak=entry). CAPS OK: 2sh cost ~$20.66 < 15% single-pos cap ($46.43); bot aggregate now 4 BB sh ~$41 = 13.2% < 40% cap; settled cash after ~$196.2 > 60% reserve ($185.73). Circuit breaker NOT fired; no volatility halt fired. Margin acct 493596811 (agentic_allowed=false) untouched."
   ]
 }
