@@ -11,3 +11,10 @@ Durable audit trail of REAL account actions taken by this bot (entries, exit fil
 | 2026-06-25 12:07 | BB | BUY — Momentum Breakout entry (market), tranche #2, order 6a3d5217 | $10.3299 | 2 sh |
 | 2026-06-25 12:07 | BB | Take-profit limit sell placed (+6.0%), order 6a3d5227 | $10.95 | 1 sh |
 | 2026-06-25 12:07 | BB | Stop-limit sell placed (−3.5% trig / −5.0% lim), order 6a3d522c | $9.97 / $9.81 | 1 sh |
+| 2026-06-26 09:30 | BB | EXIT — lot#1 stop-limit SELL filled (order 6a3d43eb) | $10.075 | 1 sh |
+| 2026-06-26 09:30 | BB | EXIT — lot#2 stop-limit SELL filled (order 6a3d522c) | $9.99 | 1 sh |
+| 2026-06-26 09:58 | BB | EXIT — lot#1 take-profit SELL filled (order 6a3d43e6) | $10.90 | 1 sh |
+| 2026-06-26 09:58 | BB | EXIT — lot#2 take-profit SELL filled (order 6a3d5227) | $10.95 | 1 sh |
+| 2026-06-26 15:10 | IBRX | BUY — Momentum Breakout entry (market), order 6a3ecea4 | $8.6291 | 2 sh |
+| 2026-06-26 15:11 | IBRX | Take-profit limit sell placed (+6.0%), order 6a3ecec2 | $9.15 | 1 sh |
+| 2026-06-26 15:11 | IBRX | Stop-limit sell placed (−3.5% trig / −5.0% lim), order 6a3ecec7 | $8.33 / $8.20 | 1 sh |
